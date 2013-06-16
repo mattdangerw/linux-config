@@ -1,0 +1,14 @@
+[user]
+	name = Matt Watson
+	email = mattdangerw@gmail.com
+[core]
+	editor = subl -w
+[color]
+	status = auto
+	commit = auto
+	diff = auto
+	branch = auto
+[credential]
+	helper = cache --timeout=28800
+[push]
+	default = simple
