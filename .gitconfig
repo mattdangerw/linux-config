@@ -12,3 +12,12 @@
 	helper = cache --timeout=28800
 [push]
 	default = simple
+[alias]
+  st = status
+	br = branch
+  ch = checkout
+  co = commit
+  re = rebase
+  ri = rebase -i
+  rd = rebase -i dev
+  dd = diff dev
