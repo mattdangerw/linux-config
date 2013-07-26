@@ -42,6 +42,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$PATH:$HOME/.local/bin"
 fi
 
+#git uses sublime
 export EDITOR="subl -w"
 
 # resume downloads if dc'd
@@ -52,17 +53,22 @@ alias term='gnome-terminal'
 
 # some more ls aliases
 alias la='ls -A'
-alias ll='ls -al'
-alias lt='ls -altr'
+alias ll='ls -Al'
+alias lt='ls -Altr'
+
+# easy zsh move
+autoload -U zmv
+alias mmv='noglob zmv -W'
 
 # sudo uses aliases
 alias sudo='sudo '
 
 # apt crap
-alias agi='sudo apt-get install'
-alias agr='sudo apt-get remove'
-alias agu='sudo apt-get update && sudo apt-get upgrade'
-alias acs='apt-cache search'
+alias install='sudo apt-get install'
+alias remove='sudo apt-get remove'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get update && sudo apt-get upgrade'
+alias search='apt-cache search'
 
 # more dots
 alias ..='cd ..'
@@ -73,9 +79,14 @@ alias shutdown='sudo shutdown -h now'
 alias reboot='sudo shutdown -r now'
 alias logout='gnome-session-quit'
 
+alias zedit='subl ~/.zshrc'
+alias zup='source ~/.zshrc'
+
+alias g='git'
+alias py='python'
+
 # cd commands for the stuff i'm currently working on
-alias sdk='cd ~/checkout/eos-sdk'
-alias prog='cd ~/checkout/eos-programming-app'
+alias demo='cd ~/tgc-demo'
 
 # ls after every cd
 function chpwd() {
