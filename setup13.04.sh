@@ -1,10 +1,6 @@
 #!/bin/bash
 # Install programs
-sudo apt-get install git gdebi ubuntu-restricted-extras sl imagemagick vlc
-
-sudo add-apt-repository ppa:webupd8team/sublime-text-2
-sudo apt-get update
-sudo apt-get install sublime-text-dev
+sudo apt-get install git zsh gdebi ubuntu-restricted-extras sl imagemagick vlc
 
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo gdebi google-chrome-stable_current_amd64.deb
@@ -12,6 +8,8 @@ sudo gdebi google-chrome-stable_current_amd64.deb
 # Remove stuff
 sudo apt-get autoremove unity-lens-shopping unity-lens-music unity-lens-photos unity-lens-gwibber unity-lens-video
 sudo service apport stop
+
+# no stupid warnings
 sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 
 # settings...
@@ -28,10 +26,15 @@ gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshel
 
 # Background... doesn't work for unity right now
 cp wallpaper.jpg ~/Pictures
-gsettings set org.gnome.desktop.background picture-uri file:///home/serrano/Pictures/wallpaper.jpg
+gsettings set org.gnome.desktop.background picture
+
+# zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+chsh -s `which zsh`
 
 # Copy dotfiles
 cp .bashrc ~
+cp .zshrc ~
 cp .profile ~
 cp .gitconfig ~
 
@@ -39,10 +42,15 @@ cp .gitconfig ~
 sudo apt-get update
 sudo apt-get upgrade
 
+echo "Get sublime 3 and run once..."
+read
+mv ~/.config/sublime-text-3/Packages ~/.config/sublime-text-3/Packages-old
+git clone https://github.com/mattdangerw/sublime-packages.git ~/.config/sublime-text-3/Packages
+
 #TODO automate
-echo "Set capslock to control"
+echo "Set capslock to control..."
 read
 echo "Graphics drivers..."
 read
-echo "Half maximize"
+echo "Half maximize shortcuts if you want..."
 read
