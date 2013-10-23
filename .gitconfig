@@ -13,11 +13,18 @@
 [push]
 	default = simple
 [alias]
-  st = status
-	br = branch
+  s = status
+  d = diff
+  br = branch
   ch = checkout
   co = commit
   re = rebase
-  ri = rebase -i
   rd = rebase -i dev
   dd = diff dev
+  lp = log --graph --pretty=oneline --abbrev-commit --color
+  pub = push --set-upstream origin HEAD
+  publish = push --set-upstream origin HEAD
+  ca = commit --amend
+  cf = commit --amend --no-edit
+[hub]
+	protocol = https
